@@ -55,10 +55,13 @@ static void MX_GPIO_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 uint16_t ledPin[12] = { GPIO_PIN_4, GPIO_PIN_5, GPIO_PIN_6, GPIO_PIN_7, GPIO_PIN_8, GPIO_PIN_9, GPIO_PIN_10, GPIO_PIN_11, GPIO_PIN_12, GPIO_PIN_13, GPIO_PIN_14, GPIO_PIN_15};
-void test (int n){
+void clearAllClock(){
 	HAL_GPIO_WritePin(GPIOA, LED_1_Pin|LED_2_Pin|LED_3_Pin|LED_4_Pin
 		                          |LED_5_Pin|LED_6_Pin|LED_7_Pin|LED_8_Pin
 		                          |LED_9_Pin|LED_10_Pin|LED_11_Pin|LED_12_Pin, SET);
+}
+void test(int n){
+	clearAllClock();
 	HAL_GPIO_WritePin(GPIOA, ledPin[n], RESET);
 }
 /* USER CODE END 0 */
