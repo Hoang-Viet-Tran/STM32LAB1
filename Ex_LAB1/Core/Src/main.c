@@ -61,10 +61,109 @@ void clearAllClock(){
 		                          |LED_9_Pin|LED_10_Pin|LED_11_Pin|LED_12_Pin, SET);
 }
 void setNumberOnClock(int num){
-	HAL_GPIO_WritePin(GPIOA, ledPin[num], RESET);
+	switch(num){
+	case 0:{
+		HAL_GPIO_WritePin(GPIOA, ledPin[0], RESET);
+		break;
+	}
+	case 1:{
+		HAL_GPIO_WritePin(GPIOA, ledPin[1], RESET);
+		break;
+	}
+	case 2:{
+		HAL_GPIO_WritePin(GPIOA, ledPin[2], RESET);
+		break;
+	}
+	case 3:{
+		HAL_GPIO_WritePin(GPIOA, ledPin[3], RESET);
+		break;
+	}
+	case 4:{
+		HAL_GPIO_WritePin(GPIOA, ledPin[4], RESET);
+		break;
+	}
+	case 5:{
+		HAL_GPIO_WritePin(GPIOA, ledPin[5], RESET);
+		break;
+	}
+	case 6:{
+		HAL_GPIO_WritePin(GPIOA, ledPin[6], RESET);
+		break;
+	}
+	case 7:{
+		HAL_GPIO_WritePin(GPIOA, ledPin[7], RESET);
+		break;
+	}
+	case 8:{
+		HAL_GPIO_WritePin(GPIOA, ledPin[8], RESET);
+		break;
+	}
+	case 9:{
+		HAL_GPIO_WritePin(GPIOA, ledPin[9], RESET);
+		break;
+	}
+	case 10:{
+		HAL_GPIO_WritePin(GPIOA, ledPin[10], RESET);
+		break;
+	}
+	case 11:{
+		HAL_GPIO_WritePin(GPIOA, ledPin[11], RESET);
+		break;
+	}
+	}
+
 }
 void clearNumberOnClock(int num){
-	HAL_GPIO_WritePin(GPIOA, ledPin[num], SET);
+	switch(num){
+	case 0:{
+		HAL_GPIO_WritePin(GPIOA, ledPin[0], SET);
+		break;
+	}
+	case 1:{
+		HAL_GPIO_WritePin(GPIOA, ledPin[1], SET);
+		break;
+	}
+	case 2:{
+		HAL_GPIO_WritePin(GPIOA, ledPin[2], SET);
+		break;
+	}
+	case 3:{
+		HAL_GPIO_WritePin(GPIOA, ledPin[3], SET);
+		break;
+	}
+	case 4:{
+		HAL_GPIO_WritePin(GPIOA, ledPin[4], SET);
+		break;
+	}
+	case 5:{
+		HAL_GPIO_WritePin(GPIOA, ledPin[5], SET);
+		break;
+	}
+	case 6:{
+		HAL_GPIO_WritePin(GPIOA, ledPin[6], SET);
+		break;
+	}
+	case 7:{
+		HAL_GPIO_WritePin(GPIOA, ledPin[7], SET);
+		break;
+	}
+	case 8:{
+		HAL_GPIO_WritePin(GPIOA, ledPin[8], SET);
+		break;
+	}
+	case 9:{
+		HAL_GPIO_WritePin(GPIOA, ledPin[9], SET);
+		break;
+	}
+	case 10:{
+		HAL_GPIO_WritePin(GPIOA, ledPin[10], SET);
+		break;
+	}
+	case 11:{
+		HAL_GPIO_WritePin(GPIOA, ledPin[11], SET);
+		break;
+	}
+	}
 }
 /* USER CODE END 0 */
 
@@ -103,17 +202,29 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int n = 0;
+  int hours = 0;
+  int minutes = 0;
+  int seconds = 0;
   while (1)
   {
     /* USER CODE END WHILE */
-	  clearAllClock();
-	  setNumberOnClock(n);
-	  n++;
-	  if(n >= 12){
-		  n = 0;
+	  if(hours == 12){
+		  hours = 0;
 	  }
-	  HAL_Delay(1000);
+	  if(minutes == 60){
+		  minutes = 0;
+		  hours++;
+	  }
+	  if(seconds == 60){
+		  seconds = 0;
+		  minutes++;
+	  }
+	  clearAllClock();
+	  setNumberOnClock(hours);
+	  setNumberOnClock(minutes/5);
+	  setNumberOnClock(seconds/5);
+	  seconds++;
+	  HAL_Delay(50);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
